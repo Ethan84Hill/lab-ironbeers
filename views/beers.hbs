@@ -1,9 +1,11 @@
-<h1>Beers</h1>
 <div>
-    {{#each Beers}}
-        {{image}}
-        {{name}}
-        {{description}}
-        {{tagline}}
-    {{/each}}
+    <h1>All Beers</h1>
+    <ul>
+        {{#each beersFromApi }}
+        <h2>{{name}}</h2>
+        <img src="{{image_url}}" alt="{{name}}">
+        <p>{{tagline}}</p>
+        <p>{{description}}</p>
+        {{/each }}
+    </ul>
 </div>

@@ -23,13 +23,18 @@ app.get('/', (req, res) => {
 });
 
 app.get("/beers", (req, res, next) => {
-  punkAPI.getBeers();
-  res.render("beers");
+  punkAPI
+  .getBeers()
+  .then(beersFromApi => res.render('beers',{beersFromApi}))
+  .catch(error => console.log(error));
 });
 
 app.get("/random-beer", (req, res, next) => {
-  punkAPI.getRandom();
-  res.render("random-beer");
+  punkAPI.getRandom()
+  .then((response) => {
+    let randomBeer = response[0]
+    res.render('random-beer', randomBeer)})
+  .catch(error => console.log(error));
 });
 
 
